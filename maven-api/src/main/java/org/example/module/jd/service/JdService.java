@@ -6,7 +6,7 @@ import com.alibaba.fastjson.JSONObject;
 import org.example.common.exception.GeneralException;
 import org.example.common.io.Output;
 import org.example.common.utils.HttpRequestUtils;
-import org.example.module.jd.entity.jokeEntity;
+import org.example.module.jd.entity.JokeEntity;
 import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
@@ -54,7 +54,7 @@ public class JdService {
         JSONObject bodyJsonObject = resultJsonObject.getJSONObject("showapi_res_body");
         JSONArray contentListArray = bodyJsonObject.getJSONArray("contentlist");
         //7、用我们事先写好的实体类接收拆解后的数据
-        List<jokeEntity> jokeEntityList = JSONArray.parseArray(contentListArray.toJSONString(),jokeEntity.class);
+        List<JokeEntity> jokeEntityList = JSONArray.parseArray(contentListArray.toJSONString(),JokeEntity.class);
         //8、返回数据
         return new Output(jokeEntityList);
     }

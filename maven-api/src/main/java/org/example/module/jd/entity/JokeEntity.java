@@ -8,7 +8,7 @@ import java.util.Date;
  * Created by <a href="https://blog.csdn.net/myme95">翻墙看妹子</a> on 2021/2/4.
  */
 @Data
-public class jokeEntity {
+public class JokeEntity {
     private Date ct;
     private String id;
     private String text;

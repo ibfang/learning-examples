@@ -22,7 +22,6 @@
     <modules>
         <module>../maven-common</module>
         <module>../maven-api</module>
-        <module>../maven-api</module>
     </modules>
 
 <!--自定义各个依赖的版本号变量名称，用properties标签统一管理各个依赖的版本号-->
@@ -108,26 +107,5 @@
         </dependencies>
     </dependencyManagement>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>
-                    spring-boot-maven-plugin
-                </artifactId>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>repackage
-                            </goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <executable>true
-                    </executable>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
+
 </project>
