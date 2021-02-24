@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/learning-examples.iml" filepath="$PROJECT_DIR$/.idea/learning-examples.iml" />
+      <module fileurl="file://$PROJECT_DIR$/maven-api/maven-api.iml" filepath="$PROJECT_DIR$/maven-api/maven-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/maven-common/maven-common.iml" filepath="$PROJECT_DIR$/maven-common/maven-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/maven-parent/maven-parent.iml" filepath="$PROJECT_DIR$/maven-parent/maven-parent.iml" />
+    </modules>
+  </component>
+</project>

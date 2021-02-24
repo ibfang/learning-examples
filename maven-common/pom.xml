@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project
+        xmlns="http://maven.apache.org/POM/4.0.0"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <!--指向父工程的GAV坐标-->
+    <parent>
+        <artifactId>maven-parent</artifactId>
+        <groupId>org.example</groupId>
+        <version>1.0-SNAPSHOT</version>
+        <!--继承父模块的pom文件-->
+        <relativePath>
+            ../maven-parent/pom.xml
+        </relativePath>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <!--项目名称，没有groupId和version，因为父工程里有了-->
+    <artifactId>maven-common</artifactId>
+
+    <!--继承父类中的依赖-->
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+    </dependencies>
+</project>

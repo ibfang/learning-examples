@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project
+        xmlns="http://maven.apache.org/POM/4.0.0"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <!--
+    maven父工程必须遵循以下两点要求：
+    1、packing标签的文本内容必须为pom。因为packing标签的作用是指定打包的方式，默认为jar，如果pom文件中没有packing标签那么默认就是打jar包
+    2、maven工程里一定有pom文件；在父工程中要把src删掉。注：target文件存的是打包之后的文件，可以不要，不论是父工程还是子工程
+    -->
+    <!--
+    pom是项目对象模型（project object module），该文件可以被继承。
+    maven多模块管理，其实就是让它的子模块的pom文件继承父工程的pom文件
+    -->
+
+    <groupId>org.example</groupId>
+    <artifactId>maven-parent</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <!--    父工程包含的所有子模块-->
+    <modules>
+        <module>../maven-common</module>
+        <module>../maven-api</module>
+        <module>../maven-api</module>
+    </modules>
+
+<!--自定义各个依赖的版本号变量名称，用properties标签统一管理各个依赖的版本号-->
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <example.version>1.0-SNAPSHOT</example.version>
+        <spring-boot.version>2.4.0</spring-boot.version>
+        <springfox.swagger.version>3.0.0</springfox.swagger.version>
+        <commons.text.version>1.9</commons.text.version>
+        <junit.version>4.12</junit.version>
+        <junit.jupiter.version>5.5.2</junit.jupiter.version>
+        <lombok.version>1.18.18</lombok.version>
+        <fastjson.version>1.2.57</fastjson.version>
+    </properties>
+
+    <dependencies>
+        <!--common工具包 -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-text</artifactId>
+            <version>${commons.text.version}</version>
+        </dependency>
+    </dependencies>
+
+    <dependencyManagement>
+        <dependencies>
+            <!--springboot 开始-->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!--springboot 结束-->
+            <!--单元测试要用到的依赖 开始-->
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit
+                </artifactId>
+                <version>${junit.version}
+                </version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.junit.jupiter</groupId>
+                <artifactId>junit-jupiter-api</artifactId>
+                <version>${junit.jupiter.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <!--单元测试要用到的依赖 结束-->
+            <!--接口文档 开始-->
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-boot-starter</artifactId>
+                <version>${springfox.swagger.version}</version>
+            </dependency>
+            <!--接口文档 结束-->
+            <!-- lombok开始 https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+                <scope>provided</scope>
+            </dependency>
+            <!-- lombok 结束 -->
+            <!--jsonObject依赖包 开始-->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastjson.version}</version>
+            </dependency>
+            <!--jsonObject依赖包 结束-->
+            <!--本项目下的maven-common作为依赖供其他子类使用 开始-->
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>maven-common</artifactId>
+                <version>${example.version}</version>
+            </dependency>
+            <!--maven-common作为依赖供其他子类使用 开始-->
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>
+                    spring-boot-maven-plugin
+                </artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage
+                            </goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <executable>true
+                    </executable>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
